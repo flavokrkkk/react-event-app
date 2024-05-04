@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { privateRoutes, publicRoutes } from ".";
+import { privateRoutes, publicRoutes } from "../routes";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import EventPage from "../pages/EventPage/EventPage";
 
