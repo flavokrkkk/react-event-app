@@ -2,9 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../routes";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import EventPage from "../pages/EventPage/EventPage";
+import { useAppSelector } from "../hooks/useAppSelector";
 
 const AppRoutes = () => {
-  const isAuth = false;
+  const { isAuth } = useAppSelector((state) => state.authReducer);
 
   return (
     <>

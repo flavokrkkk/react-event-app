@@ -8,9 +8,10 @@ import {
 } from "./styled";
 import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../../../routes";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 
 const Navbar: FC = () => {
-  const isAuth = false;
+  const { isAuth } = useAppSelector((state) => state.authReducer);
 
   const navigate = useNavigate();
 
