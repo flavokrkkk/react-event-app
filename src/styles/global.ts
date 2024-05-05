@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   * {
@@ -40,4 +40,10 @@ export default createGlobalStyle`
     list-style-type: none;
   }
 
+`;
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px);
 `;

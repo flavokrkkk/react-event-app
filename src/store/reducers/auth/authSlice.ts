@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AuthState } from "./types";
 
 const initialState = <AuthState>{
-  isAuth: true,
+  isAuth: false,
 };
 
 export const authSlice = createSlice({
