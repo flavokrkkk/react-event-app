@@ -2,8 +2,9 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { RouteNames, privateRoutes, publicRoutes } from "../routes";
 import { useAppSelector } from "../hooks/useAppSelector";
 import { useEffect } from "react";
-import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import { AuthSelectors } from "../store/selectors";
+import EventPage from "../pages/EventPage/EventPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 const AppRoutes = () => {
   const { isAuth } = useAppSelector(AuthSelectors);
@@ -23,14 +24,14 @@ const AppRoutes = () => {
           {privateRoutes.map(({ path, component }) => (
             <Route path={path} Component={component} key={path} />
           ))}
-          <Route path="*" Component={ErrorPage} />
+          <Route path="*" Component={EventPage} />
         </Routes>
       ) : (
         <Routes>
           {publicRoutes.map(({ path, component }) => (
             <Route path={path} Component={component} key={path} />
           ))}
-          <Route path="*" Component={ErrorPage} />
+          <Route path="*" Component={LoginPage} />
         </Routes>
       )}
     </>
