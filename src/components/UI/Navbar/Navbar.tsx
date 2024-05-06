@@ -4,6 +4,7 @@ import {
   NavbarItem,
   NavbarLeftSide,
   NavbarRightSide,
+  SubTitleNavbar,
   WrapperNavbar,
 } from "./styled";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +37,7 @@ const Navbar: FC = () => {
           </NavbarLeftSide>
           <NavbarRightSide>
             <NavbarItem>
-              <h4>{user.username}</h4>
+              <SubTitleNavbar>{user.username}</SubTitleNavbar>
             </NavbarItem>
             <NavbarItem>
               <Button onClick={handleNavigateLogout}>Log out</Button>

@@ -47,3 +47,12 @@ export const Container = styled.div`
   justify-content: center;
   height: calc(100vh - 64px);
 `;
+
+export const Title = styled.h1`
+  text-align: center;
+  margin: 20px;
+`;
+
+export const ButtonWrapper = styled.div`
+  margin: 0 auto;
+`;

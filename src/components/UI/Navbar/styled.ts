@@ -7,6 +7,10 @@ export const WrapperNavbar = styled.div`
   cursor: pointer;
 `;
 
+export const SubTitleNavbar = styled.h4`
+  text-transform: uppercase;
+`;
+
 export const NavbarRightSide = styled.div`
   display: flex;
   align-items: center;
