@@ -25,11 +25,14 @@ export const AuthActionCreators = {
             dispatch(AuthActionCreators.setIsAuth(true));
             dispatch(AuthActionCreators.setUser(mockUser));
           } else {
-            dispatch(AuthActionCreators.setIsError("Пользователь не найден!"));
+            dispatch(
+              AuthActionCreators.setIsError(
+                "Пользователь не найден! Попробуйте еще раз!"
+              )
+            );
           }
         }, 1000);
       } catch (err) {
-        console.log("1111");
         dispatch(AuthActionCreators.setIsError(`Error with type ${err}`));
       }
     },

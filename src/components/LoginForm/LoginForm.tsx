@@ -1,36 +1,41 @@
 import { Button, Form, Input } from "antd";
 import React, { FC, useState } from "react";
 import { rules } from "../../utils/rules";
-import { AuthActionCreators } from "../../store/reducers/auth/action-creators";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
+import { useActions } from "../../hooks/useActions";
+import { AuthSelectors } from "../../store/selectors";
+import { useDebounced } from "../../hooks/useDebounced";
 
 const LoginForm: FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const dispatch = useAppDispatch();
+  const { login } = useActions();
+  const debouncedUsername = useDebounced(setUsername, 500);
+  const debouncedPassword = useDebounced(setPassword, 500);
 
-  const { isError, isLoading } = useAppSelector((state) => state.authReducer);
+  const { isError, isLoading } = useAppSelector(AuthSelectors);
 
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault;
-    dispatch(AuthActionCreators.login(username, password));
+    login(username, password);
   };
-
+  console.log({ username, password });
   const handleChangeInputName = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setUsername(event.target.value);
+    debouncedUsername(event.target.value);
   };
   const handleChangeInputPassword = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setPassword(event.target.value);
+    debouncedPassword(event.target.value);
   };
-
   return (
-    <Form onFinish={onFormSubmit}>
+    <Form
+      onFinish={onFormSubmit}
+      style={{ width: 400, height: 200, alignContent: "center" }}
+    >
       {isError && <div>{isError}</div>}
       <Form.Item
         label="Username"

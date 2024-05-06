@@ -3,9 +3,10 @@ import { RouteNames, privateRoutes, publicRoutes } from "../routes";
 import { useAppSelector } from "../hooks/useAppSelector";
 import { useEffect } from "react";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import { AuthSelectors } from "../store/selectors";
 
 const AppRoutes = () => {
-  const { isAuth } = useAppSelector((state) => state.authReducer);
+  const { isAuth } = useAppSelector(AuthSelectors);
   const navigate = useNavigate();
   useEffect(() => {
     if (isAuth) {

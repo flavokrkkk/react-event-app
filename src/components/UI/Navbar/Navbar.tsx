@@ -9,21 +9,21 @@ import {
 import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../../../routes";
 import { useAppSelector } from "../../../hooks/useAppSelector";
-import { useAppDispatch } from "../../../hooks/useAppDispatch";
-import { AuthActionCreators } from "../../../store/reducers/auth/action-creators";
+import { useActions } from "../../../hooks/useActions";
+import { AuthSelectors } from "../../../store/selectors";
 
 const Navbar: FC = () => {
-  const { isAuth } = useAppSelector((state) => state.authReducer);
+  const { isAuth, user } = useAppSelector(AuthSelectors);
   const navigate = useNavigate();
 
-  const dispatch = useAppDispatch();
+  const { logout } = useActions();
 
-  const handleNavigation = () => {
+  const handleNaviagteLogin = () => {
     navigate(RouteNames.LOGIN);
   };
 
-  const handleReplaceNavigate = () => {
-    dispatch(AuthActionCreators.logout());
+  const handleNavigateLogout = () => {
+    logout();
   };
   return (
     <Layout.Header>
@@ -36,10 +36,10 @@ const Navbar: FC = () => {
           </NavbarLeftSide>
           <NavbarRightSide>
             <NavbarItem>
-              <h4>Egor Yarovitsyn</h4>
+              <h4>{user.username}</h4>
             </NavbarItem>
             <NavbarItem>
-              <Button onClick={handleReplaceNavigate}>Log out</Button>
+              <Button onClick={handleNavigateLogout}>Log out</Button>
             </NavbarItem>
           </NavbarRightSide>
         </WrapperNavbar>
@@ -52,7 +52,7 @@ const Navbar: FC = () => {
           </NavbarLeftSide>
           <NavbarRightSide>
             <div>
-              <Button onClick={handleNavigation}>Login in</Button>
+              <Button onClick={handleNaviagteLogin}>Login in</Button>
             </div>
           </NavbarRightSide>
         </WrapperNavbar>
