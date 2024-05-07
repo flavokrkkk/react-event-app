@@ -33,7 +33,9 @@ const EventForm: FC<EventFormProps> = ({ guests }) => {
       <Form.Item>
         <Select>
           {guests.map((guest) => (
-            <Select.Option key={guest.username}>{guest.username}</Select.Option>
+            <Select.Option key={guest.username} value={guest.username}>
+              {guest.username}
+            </Select.Option>
           ))}
         </Select>
       </Form.Item>

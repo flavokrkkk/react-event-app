@@ -1,7 +1,6 @@
-import axios from "axios";
 import { AppDispatch } from "../..";
 import { eventSlice } from "./eventSlice";
-import { IUser } from "../../../models/IUser";
+import { UserService } from "../../../api/UserService";
 
 export const EventActionCreators = {
   getAllGuests: eventSlice.actions.fetchAllGuests,
@@ -10,7 +9,7 @@ export const EventActionCreators = {
 
   fetchAllGuests: () => async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get<IUser[]>("/users.json");
+      const response = await UserService.getUsers();
       dispatch(EventActionCreators.getAllGuests(response.data));
     } catch (err) {
       dispatch(
