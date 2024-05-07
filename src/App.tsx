@@ -4,9 +4,9 @@ import Navbar from "./components/UI/Navbar/Navbar";
 import { useEffect } from "react";
 import { useActions } from "./hooks/useActions";
 import { IUser } from "./models/IUser";
-
 function App() {
   const { setIsAuth, setUser } = useActions();
+
   useEffect(() => {
     if (localStorage.getItem("auth")) {
       setUser({ username: localStorage.getItem("username" || "") } as IUser);
