@@ -5,14 +5,16 @@ import { ButtonWrapper, Title } from "../../styles/global";
 import EventForm from "../../components/EventForm/EventForm";
 import { useActions } from "../../hooks/useActions";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { EventSelectors } from "../../store/selectors";
+import { AuthSelectors, EventSelectors } from "../../store/selectors";
+import { IEvent } from "../../models/IEvent";
 
 const EventPage: FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const { guests } = useAppSelector(EventSelectors);
+  const { guests, events } = useAppSelector(EventSelectors);
+  const { user } = useAppSelector(AuthSelectors);
 
-  const { fetchAllGuests } = useActions();
+  const { fetchAllGuests, createEvent, fetchEvents } = useActions();
 
   const handleModalOpen = () => {
     setIsVisible(true);
@@ -22,9 +24,20 @@ const EventPage: FC = () => {
     setIsVisible(false);
   };
 
+  const handleFormSubmit = (event: IEvent) => {
+    setIsVisible(false);
+    createEvent(event);
+  };
+
   useEffect(() => {
     fetchAllGuests();
   }, []);
+
+  useEffect(() => {
+    fetchEvents(user.username);
+  }, [events.length]);
+
+  console.log(events);
 
   return (
     <Layout>
@@ -32,14 +45,14 @@ const EventPage: FC = () => {
       <ButtonWrapper>
         <Button onClick={handleModalOpen}>Add Event</Button>
       </ButtonWrapper>
-      <EventCalnedar events={[]} />
+      <EventCalnedar events={events} />
       <Modal
         open={isVisible}
         title="Добавить событие"
         footer={null}
         onCancel={handleModalCancel}
       >
-        <EventForm guests={guests} />
+        <EventForm onSubmit={handleFormSubmit} guests={guests} />
       </Modal>
     </Layout>
   );
