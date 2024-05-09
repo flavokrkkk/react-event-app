@@ -1,21 +1,12 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { RouteNames, privateRoutes, publicRoutes } from "../routes";
+import { Route, Routes } from "react-router-dom";
+import { privateRoutes, publicRoutes } from "../routes";
 import { useAppSelector } from "../hooks/useAppSelector";
-import { useEffect } from "react";
 import { AuthSelectors } from "../store/selectors";
-import EventPage from "../pages/EventPage/EventPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import HomePage from "../pages/HomePage/HomePage";
 
 const AppRoutes = () => {
   const { isAuth } = useAppSelector(AuthSelectors);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (isAuth) {
-      navigate(RouteNames.EVENT);
-    } else {
-      navigate(RouteNames.LOGIN);
-    }
-  }, [isAuth]);
 
   return (
     <>
@@ -24,7 +15,7 @@ const AppRoutes = () => {
           {privateRoutes.map(({ path, component }) => (
             <Route path={path} Component={component} key={path} />
           ))}
-          <Route path="*" Component={EventPage} />
+          <Route path="*" Component={HomePage} />
         </Routes>
       ) : (
         <Routes>

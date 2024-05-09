@@ -62,7 +62,7 @@ const LoginForm: FC = () => {
         </Form.Item>
         <Form.Item>
           <WrapperButton>
-            <Button block type="primary" htmlType="submit" loading={isLoading}>
+            <Button block type="default" htmlType="submit" loading={isLoading}>
               Submit
             </Button>
           </WrapperButton>

@@ -1,9 +1,11 @@
 import { Button, Layout } from "antd";
 import { FC } from "react";
 import {
+  LinkTitle,
   NavbarItem,
   NavbarLeftSide,
   NavbarRightSide,
+  NavbarTitle,
   SubTitleNavbar,
   WrapperNavbar,
 } from "./styled";
@@ -12,6 +14,7 @@ import { RouteNames } from "../../../routes";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { useActions } from "../../../hooks/useActions";
 import { AuthSelectors } from "../../../store/selectors";
+import { NavLink } from "react-router-dom";
 
 const Navbar: FC = () => {
   const { isAuth, user } = useAppSelector(AuthSelectors);
@@ -32,7 +35,17 @@ const Navbar: FC = () => {
         <WrapperNavbar>
           <NavbarLeftSide>
             <div>
-              <h1>Event</h1>
+              <NavbarTitle>Event</NavbarTitle>
+            </div>
+            <div>
+              <NavLink to={RouteNames.HOME}>
+                <LinkTitle>Home</LinkTitle>
+              </NavLink>
+            </div>
+            <div>
+              <NavLink to={RouteNames.EVENT}>
+                <LinkTitle>Events</LinkTitle>
+              </NavLink>
             </div>
           </NavbarLeftSide>
           <NavbarRightSide>
@@ -48,7 +61,7 @@ const Navbar: FC = () => {
         <WrapperNavbar>
           <NavbarLeftSide>
             <div>
-              <h1>Event</h1>
+              <NavbarTitle>Event</NavbarTitle>
             </div>
           </NavbarLeftSide>
           <NavbarRightSide>

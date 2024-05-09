@@ -1,9 +1,14 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle`
+interface GlobalStylesProps {
+  moodColor: string;
+}
+
+export default createGlobalStyle<GlobalStylesProps>`
   * {
     margin: 0;
     padding: 0;
+    color: ${({ moodColor }) => moodColor};
     box-sizing: border-box;
     outline: none;
   }
@@ -12,6 +17,8 @@ export default createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
+
+
 
   body {
     font-family: "Roboto", sans-serif;

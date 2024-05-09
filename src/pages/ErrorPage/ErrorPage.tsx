@@ -15,7 +15,7 @@ const ErrorPage: FC<ErrorPageProps> = ({ error }) => {
   const { isAuth } = useAppSelector(AuthSelectors);
   const handleNavigation = () =>
     isAuth ? navigate(RouteNames.EVENT) : navigate(RouteNames.LOGIN);
-  return <Error onClick={handleNavigation} error={error} />;
+  return <Error error={error} onClick={handleNavigation} />;
 };
 
 export default ErrorPage;

@@ -1,10 +1,12 @@
 import React from "react";
 import EventPage from "../pages/EventPage/EventPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import HomePage from "../pages/HomePage/HomePage";
 
 export const enum RouteNames {
   LOGIN = "/login",
-  EVENT = "/",
+  EVENT = "/event",
+  HOME = "/home",
 }
 
 export interface IRoute {
@@ -23,5 +25,9 @@ export const privateRoutes = <IRoute[]>[
   {
     path: RouteNames.EVENT,
     component: EventPage,
+  },
+  {
+    path: RouteNames.HOME,
+    component: HomePage,
   },
 ];

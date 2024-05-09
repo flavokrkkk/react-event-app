@@ -52,7 +52,7 @@ const EventPage: FC = () => {
         footer={null}
         onCancel={handleModalCancel}
       >
-        <EventForm onSubmit={handleFormSubmit} guests={guests} />
+        <EventForm guests={guests} onSubmit={handleFormSubmit} />
       </Modal>
     </Layout>
   );

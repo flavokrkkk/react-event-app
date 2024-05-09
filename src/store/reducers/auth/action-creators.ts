@@ -2,6 +2,7 @@ import { AppDispatch } from "../..";
 import { authSlice } from "./authSlice";
 import { IUser } from "../../../models/IUser";
 import { UserService } from "../../../api/UserService";
+import { MoodActionCreators } from "../mood/action-creators";
 
 export const AuthActionCreators = {
   setUser: authSlice.actions.fetchUserSuccess,
@@ -40,6 +41,8 @@ export const AuthActionCreators = {
   logout: () => async (dispatch: AppDispatch) => {
     localStorage.removeItem("auth");
     localStorage.removeItem("username");
+    localStorage.removeItem("mood");
+    dispatch(MoodActionCreators.toggleColor("black"));
     dispatch(AuthActionCreators.setUser({} as IUser));
     dispatch(AuthActionCreators.setIsAuth(false));
   },

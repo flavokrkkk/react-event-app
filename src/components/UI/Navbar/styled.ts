@@ -8,6 +8,7 @@ export const WrapperNavbar = styled.div`
 `;
 
 export const SubTitleNavbar = styled.h4`
+  color: #fff;
   text-transform: uppercase;
 `;
 
@@ -24,4 +25,16 @@ export const NavbarItem = styled.div`
   }
 `;
 
-export const NavbarLeftSide = styled.div``;
+export const NavbarLeftSide = styled.div`
+  display: flex;
+  gap: 30px;
+`;
+
+export const LinkTitle = styled.div`
+  text-decoration: none;
+  color: #fff;
+`;
+
+export const NavbarTitle = styled.h1`
+  color: #fff;
+`;

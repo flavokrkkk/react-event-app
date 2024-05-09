@@ -48,14 +48,10 @@ const EventForm: FC<EventFormProps> = ({ guests, onSubmit }) => {
         name="description"
         rules={[rules.required()]}
       >
-        <Input onChange={handleInputChange} value={event.description} />
+        <Input value={event.description} onChange={handleInputChange} />
       </Form.Item>
 
-      <Form.Item
-        label="Дата события"
-        name="date"
-        rules={[rules.required(), rules.isDateAfter("Указана прошедшая дата"!)]}
-      >
+      <Form.Item label="Дата события" name="date" rules={[rules.required()]}>
         <DatePicker onChange={handleSelectDate} />
       </Form.Item>
 

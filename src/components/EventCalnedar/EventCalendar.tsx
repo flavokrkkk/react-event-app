@@ -1,5 +1,5 @@
 import { Calendar } from "antd";
-import { WrapperCalendar } from "./styled";
+import { WrapperCalendar, WrapperEvent } from "./styled";
 import { FC } from "react";
 import { IEvent } from "../../models/IEvent";
 import { Moment } from "moment";
@@ -18,7 +18,7 @@ const EventCalnedar: FC<EventCalendarProps> = ({ events }) => {
     return (
       <div>
         {currentDayEvents.map((event, index) => (
-          <span key={index}>{event.description}</span>
+          <WrapperEvent key={index}>{event.description}</WrapperEvent>
         ))}
       </div>
     );
