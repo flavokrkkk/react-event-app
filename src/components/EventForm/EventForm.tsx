@@ -28,7 +28,10 @@ const EventForm: FC<EventFormProps> = ({ guests, onSubmit }) => {
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEvent({ ...event, description: event.target.value });
+    const descr =
+      event.target.value[0].toUpperCase() + event.target.value.slice(1);
+    console.log(descr);
+    setEvent({ ...event, description: descr });
   };
 
   const handleSelectDate = (date: Moment | null) => {

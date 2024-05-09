@@ -34,7 +34,7 @@ const MoodEvent: FC<MoodColorProps> = ({ moodColor }) => {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "80vh" }}>
       <WrapperMood>
         <WrapperMoodItem moodColor={moodColor}>
           <MoodTitle moodColor={moodColor}>

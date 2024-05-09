@@ -47,6 +47,11 @@ const Navbar: FC = () => {
                 <LinkTitle>Events</LinkTitle>
               </NavLink>
             </div>
+            <div>
+              <NavLink to={RouteNames.PROFILE}>
+                <LinkTitle>Profile</LinkTitle>
+              </NavLink>
+            </div>
           </NavbarLeftSide>
           <NavbarRightSide>
             <NavbarItem>

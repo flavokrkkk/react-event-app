@@ -44,4 +44,12 @@ export const EventActionCreators = {
       console.log(err);
     }
   },
+  deleteEvent: (date: string) => (dispatch: AppDispatch) => {
+    const events = localStorage.getItem("events") || "[]";
+    const json = JSON.parse(events) as IEvent[];
+    const removeEvent = json.filter((ev) => ev.date !== date);
+    localStorage.removeItem("events");
+    localStorage.setItem("events", JSON.stringify(removeEvent));
+    dispatch(EventActionCreators.setEvents(removeEvent));
+  },
 };

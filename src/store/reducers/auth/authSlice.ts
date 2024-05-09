@@ -16,6 +16,7 @@ export const authSlice = createSlice({
     toggleStateIsAuth(state, { payload }: PayloadAction<boolean>) {
       state.isAuth = payload;
       state.isLoading = false;
+      state.isError = "";
     },
     fetchUserIsLoading(state, { payload }: PayloadAction<boolean>) {
       state.isLoading = payload;

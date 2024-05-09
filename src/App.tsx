@@ -6,11 +6,18 @@ import { useActions } from "./hooks/useActions";
 import { IUser } from "./models/IUser";
 import GlobalStyles from "./styles/global.ts";
 import { useAppSelector } from "./hooks/useAppSelector.ts";
-import { MoodSelectors } from "./store/selectors.ts";
+import {
+  AuthSelectors,
+  EventSelectors,
+  MoodSelectors,
+} from "./store/selectors.ts";
+import { Footer } from "antd/es/layout/layout";
 
 function App() {
-  const { setIsAuth, setUser } = useActions();
+  const { setIsAuth, setUser, fetchEvents } = useActions();
   const { moodColor } = useAppSelector(MoodSelectors);
+  const { user } = useAppSelector(AuthSelectors);
+  const { events } = useAppSelector(EventSelectors);
 
   const { toggleColor } = useActions();
   useEffect(() => {
@@ -24,15 +31,30 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    fetchEvents(user.username);
+  }, [events.length]);
+
   return (
     <>
       <Layout>
         <GlobalStyles moodColor={moodColor} />
-
         <Navbar />
         <Layout.Content>
           <AppRoutes />
         </Layout.Content>
+        <Footer
+          style={{
+            textAlign: "center",
+            position: "fixed",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 10,
+          }}
+        >
+          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        </Footer>
       </Layout>
     </>
   );

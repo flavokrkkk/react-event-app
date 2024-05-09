@@ -61,5 +61,6 @@ export const Title = styled.h1`
 `;
 
 export const ButtonWrapper = styled.div`
+  width: 400px;
   margin: 0 auto;
 `;

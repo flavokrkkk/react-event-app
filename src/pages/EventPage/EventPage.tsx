@@ -43,7 +43,9 @@ const EventPage: FC = () => {
     <Layout>
       <Title>Calendar-Event</Title>
       <ButtonWrapper>
-        <Button onClick={handleModalOpen}>Add Event</Button>
+        <Button block onClick={handleModalOpen}>
+          Add Event
+        </Button>
       </ButtonWrapper>
       <EventCalnedar events={events} />
       <Modal

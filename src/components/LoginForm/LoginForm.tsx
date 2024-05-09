@@ -6,6 +6,7 @@ import { useActions } from "../../hooks/useActions";
 import { AuthSelectors } from "../../store/selectors";
 import { useDebounced } from "../../hooks/useDebounced";
 import {
+  TitleError,
   TitleForm,
   WrapperButton,
   WrapperError,
@@ -17,8 +18,8 @@ const LoginForm: FC = () => {
   const [password, setPassword] = useState<string>("");
 
   const { login } = useActions();
-  const debouncedUsername = useDebounced(setUsername, 300);
-  const debouncedPassword = useDebounced(setPassword, 300);
+  const debouncedUsername = useDebounced(setUsername, 200);
+  const debouncedPassword = useDebounced(setPassword, 200);
 
   const { isError, isLoading } = useAppSelector(AuthSelectors);
 
@@ -40,7 +41,9 @@ const LoginForm: FC = () => {
     <WrapperForm>
       <TitleForm>Authorization</TitleForm>
       <Form onFinish={onFormSubmit}>
-        <WrapperError>{isError && <div>{isError}</div>}</WrapperError>
+        <WrapperError>
+          {isError && <TitleError>{isError}</TitleError>}
+        </WrapperError>
         <Form.Item
           label="Username"
           name="username"
