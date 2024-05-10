@@ -1,8 +1,19 @@
 import { Button, Form, Input } from "antd";
-import { TitleForm, WrapperButton, WrapperError, WrapperForm } from "./styled";
+import {
+  SpanForm,
+  TitleForm,
+  WrapperButton,
+  WrapperError,
+  WrapperForm,
+} from "./styled";
 import { rules } from "../../utils/rules";
+import { FC } from "react";
 
-const RegisterForm = () => {
+interface RegisterFormProps {
+  handleSetIsVisible: () => void;
+}
+
+const RegisterForm: FC<RegisterFormProps> = ({ handleSetIsVisible }) => {
   return (
     <WrapperForm>
       <TitleForm>Registration</TitleForm>
@@ -23,6 +34,10 @@ const RegisterForm = () => {
         >
           <Input type="password" />
         </Form.Item>
+        <SpanForm onClick={handleSetIsVisible}>
+          Есть аккаунт? Авторизуйтесь!
+        </SpanForm>
+
         <Form.Item>
           <WrapperButton>
             <Button block type="default" htmlType="submit">

@@ -6,6 +6,7 @@ import { useActions } from "../../hooks/useActions";
 import { AuthSelectors } from "../../store/selectors";
 import { useDebounced } from "../../hooks/useDebounced";
 import {
+  SpanForm,
   TitleError,
   TitleForm,
   WrapperButton,
@@ -13,7 +14,11 @@ import {
   WrapperForm,
 } from "./styled.ts";
 
-const LoginForm: FC = () => {
+interface LoginFormProps {
+  handleSetIsVisible: () => void;
+}
+
+const LoginForm: FC<LoginFormProps> = ({ handleSetIsVisible }) => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -63,6 +68,9 @@ const LoginForm: FC = () => {
             onChange={handleChangeInputPassword}
           />
         </Form.Item>
+        <SpanForm onClick={handleSetIsVisible}>
+          Нет аккаунта? Зарегистрируйтесь!
+        </SpanForm>
         <Form.Item>
           <WrapperButton>
             <Button block type="default" htmlType="submit" loading={isLoading}>

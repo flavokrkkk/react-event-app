@@ -14,7 +14,13 @@ const LoginPage: FC = () => {
   return (
     <Layout>
       <Container>
-        <Card>{isVisible ? <LoginForm /> : <RegisterForm />}</Card>
+        <Card>
+          {isVisible ? (
+            <LoginForm handleSetIsVisible={handleSetIsVisible} />
+          ) : (
+            <RegisterForm handleSetIsVisible={handleSetIsVisible} />
+          )}
+        </Card>
       </Container>
     </Layout>
   );

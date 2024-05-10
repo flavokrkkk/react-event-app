@@ -52,4 +52,11 @@ export const EventActionCreators = {
     localStorage.setItem("events", JSON.stringify(removeEvent));
     dispatch(EventActionCreators.setEvents(removeEvent));
   },
+
+  sortEvent: () => (dispatch: AppDispatch) => {
+    const events = localStorage.getItem("events") || "[]";
+    const json = JSON.parse(events) as IEvent[];
+    const sortEvent = json.sort((a, b) => Number(a.date) - Number(b.date));
+    console.log(sortEvent);
+  },
 };
